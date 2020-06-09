@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="text-center mb-2">Welcome to Cloud Nine Events! </h1>
+
+
+
+
+        {% if messages %}
+        <ul style="list-style: none;">
+            {% for message in messages %}
+
+            <li class="text-danger medium"> {{ message }}</li>
+            {% endfor %}
+        </ul>
+
+        {% endif %}
+
+        <!------------- START OF REG ----------->
+
+        <div class="row">
+
+            <div class="col" class="form-group">
+                <h3>Register</h3>
+
+                <form action="/register" method="POST">
+
+                    {% csrf_token %}
+                    <label> First Name </label>
+                    <input type="text" class="form-control" name="first_name">
+
+                    <label> Last Name </label>
+                    <input type="text" class="form-control" name="last_name">
+
+                    <label> Email </label>
+                    <input type="text" class="form-control" name="email">
+
+                    <label>Password </label>
+                    <input type="password" class="form-control" name="password">
+
+                    <label> Confirm Password </label>
+                    <input type="password" class="form-control" name="password2">
+
+                    <input type="submit" class="btn btn-primary mt-2" value="Register">
+
+                </form>
+            </div>
+            <!--- End of register column div-->
+
+
+
+            <!------------- START OF LOGIN ----------->
+            <div class="col" class="form-group">
+                <h3>Log In Here </h3>
+
+
+                <form action="/login" method="POST">
+                    {% csrf_token %}
+
+                    <label> Email </label>
+                    <input type="text" class="form-control" name="email_input">
+
+                    <label>Password </label>
+                    <input type="password" class="form-control" name="password_input">
+
+                    <input type="submit" class=" btn btn-primary mt-2" value="Login">
+                </form>
+            </div>
+            <!------- End of login col div ---->
+        </div>
+        <!----------- End of Row Div ---->
+    </div>
+    <!--- End of container div ---->
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title> Create An Event </title>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Welcome {{ user.first_name }} !</h1>
+
+        <h2>Let's Create A New Event Here </h2>
+
+        {% if messages %}
+        <ul style="list-style: none;">
+            {% for message in messages %}
+
+            <li class="text-danger medium"> {{ message }}</li>
+            {% endfor %}
+        </ul>
+
+        {% endif %}
+        <a href="logout" class="btn btn-danger ml-3 mb-3 float-right">Log Out Now</a>
+
+        <form action="create_event" method="POST">
+            {% csrf_token %}
+
+            <label> Event Name </label>
+            <input type="text" class="form-control" name="event">
+
+            <label> Description </label>
+            <textarea class="form-control" name="desc"> </textarea>
+
+            <label> Date of Event</label>
+            <input class="form-control" type="date">
+
+            <label> Location </label>
+            <input type="text" class="form-control" name="location">
+
+            <input class="btn btn-warning mt-2" type="submit" value="Create">
+
+        </form>
+
+    </div>
+</body>
+
+</html>
